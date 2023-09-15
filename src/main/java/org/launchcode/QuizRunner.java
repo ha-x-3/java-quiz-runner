@@ -11,7 +11,7 @@ public class QuizRunner {
                 "    B. Amelia Earhart\n" +
                 "    C. Harriet Quimby\n" +
                 "    D. Eileen Collins");
-        quiz.addCheckBox("What were the four main characters' names in the TV series \"Golden Girls\"?", "\t1. Maude\n" +
+        quiz.addCB("What were the four main characters' names in the TV series \"Golden Girls\"?", "\t1. Maude\n" +
                 "    2. Blanche\n" +
                 "    3. Dorothy\n" +
                 "    4. Fran\n" +

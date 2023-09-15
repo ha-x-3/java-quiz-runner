@@ -7,6 +7,12 @@ public class MultipleChoice extends Question {
     private Boolean isCorrect;
     private final String possibleAnswers;
 
+    public MultipleChoice(String aQuestion, String anAnswer, String aPossibleAnswers) {
+        question = aQuestion;
+        answer = anAnswer;
+        possibleAnswers = aPossibleAnswers;
+    }
+
     public String ask() {
         return this.question + "\n" + this.possibleAnswers;
     }
@@ -29,12 +35,6 @@ public class MultipleChoice extends Question {
 
     public String getAnswer() {
         return this.answer;
-    }
-
-    public MultipleChoice(String aQuestion, String anAnswer, String aPossibleAnswers) {
-        question = aQuestion;
-        answer = anAnswer;
-        possibleAnswers = aPossibleAnswers;
     }
 
 }

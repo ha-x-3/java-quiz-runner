@@ -28,7 +28,7 @@ public class Quiz {
         this.theQuestions.add(q);
     }
 
-    public void addCheckBox(String aQuestion, String answers, String aCorrectAnswers) {
+    public void addCB(String aQuestion, String answers, String aCorrectAnswers) {
         Question q = new Checkbox(aQuestion, answers, aCorrectAnswers);
         this.theQuestions.add(q);
     }
@@ -49,4 +49,5 @@ public class Quiz {
     public ArrayList<Question> getTheQuestions() {
         return theQuestions;
     }
+
 }

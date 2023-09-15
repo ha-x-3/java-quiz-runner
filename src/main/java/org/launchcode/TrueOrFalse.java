@@ -6,6 +6,11 @@ public class TrueOrFalse extends Question{
     private final String answer;
     private Boolean isCorrect;
 
+    public TrueOrFalse(String anAnswer, String aQuestion) {
+        answer = anAnswer;
+        question = aQuestion;
+    }
+
     public String ask() {
         return "True or False \n" + this.question;
     }
@@ -24,11 +29,6 @@ public class TrueOrFalse extends Question{
 
     public Boolean getIsCorrect() {
         return isCorrect;
-    }
-
-    public TrueOrFalse(String anAnswer, String aQuestion) {
-        answer = anAnswer;
-        question = aQuestion;
     }
 
 }
