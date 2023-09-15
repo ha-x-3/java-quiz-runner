@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Quiz {
 
-    private ArrayList<Question> theQuestions = new ArrayList<>();
-    private String name;
+    private final ArrayList<Question> theQuestions = new ArrayList<>();
+    private final String name;
     private Integer totalCorrect = 0;
-    Quiz(String aName) {
+    public Quiz(String aName) {
         name = aName;
     }
 

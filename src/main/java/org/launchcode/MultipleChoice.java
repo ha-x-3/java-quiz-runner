@@ -2,10 +2,10 @@ package org.launchcode;
 
 public class MultipleChoice extends Question {
 
-    private String question;
-    private String answer;
+    private final String question;
+    private final String answer;
     private Boolean isCorrect;
-    private String possibleAnswers;
+    private final String possibleAnswers;
 
     public String ask() {
         return this.question + "\n" + this.possibleAnswers;

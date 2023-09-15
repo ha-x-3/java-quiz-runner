@@ -2,8 +2,8 @@ package org.launchcode;
 
 public class TrueOrFalse extends Question{
 
-    private String question;
-    private String answer;
+    private final String question;
+    private final String answer;
     private Boolean isCorrect;
 
     public String ask() {
