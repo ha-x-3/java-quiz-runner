@@ -2,8 +2,33 @@ package org.launchcode;
 
 public class TrueOrFalse extends Question{
 
-    public TrueOrFalse(String question, String correctAnswer) {
-        super(question, correctAnswer);
+    String question;
+    String answer;
+    Boolean isCorrect;
+
+    public String ask() {
+        return "True or False \n" + this.question;
+    }
+
+    public void record(String userAnswer) {
+        if(userAnswer.equals(answer)) {
+            this.setIsCorrect(true);
+        } else {
+            this.setIsCorrect(false);
+        }
+    }
+
+    private void setIsCorrect(Boolean possibleCorrect) {
+        isCorrect = possibleCorrect;
+    }
+
+    public Boolean getIsCorrect() {
+        return isCorrect;
+    }
+
+    public TrueOrFalse(String anAnswer, String aQuestion) {
+        answer = anAnswer;
+        question = aQuestion;
     }
 
 }

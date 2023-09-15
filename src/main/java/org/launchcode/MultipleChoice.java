@@ -1,33 +1,40 @@
 package org.launchcode;
 
-import java.util.ArrayList;
-
 public class MultipleChoice extends Question {
 
-    ArrayList<String> answers = new ArrayList<>();
+    String question;
+    String answer;
+    Boolean isCorrect;
+    String possibleAnswers;
 
-    public MultipleChoice(String question, String correctAnswer, ArrayList<String> answers) {
-        super(question, correctAnswer);
-        this.answers = answers;
+    public String ask() {
+        return this.question + "\n" + this.possibleAnswers;
     }
 
-//    @Override
-//    public String toString() {
-//
-//        String str;
-//
-//        for (String a : answers) {
-//
-//        }
-//
-//        return getQuestion() + System.lineSeparator() +
-//                getCorrectAnswer().join(",") +
-//                answers;
-//    }
-
-
-    @Override
-    public String toString() {
-        return super.toString();
+    public void record(String userAnswer) {
+        if (userAnswer.equals(this.getAnswer())) {
+            this.setIsCorrect(true);
+        } else {
+            this.setIsCorrect(false);
+        }
     }
+
+    private void setIsCorrect(Boolean correct) {
+        isCorrect = correct;
+    }
+
+    public Boolean getIsCorrect() {
+        return  isCorrect;
+    }
+
+    public String getAnswer() {
+        return this.answer;
+    }
+
+    public MultipleChoice(String aQuestion, String anAnswer, String aPossibleAnswers) {
+        question = aQuestion;
+        answer = anAnswer;
+        possibleAnswers = aPossibleAnswers;
+    }
+
 }
