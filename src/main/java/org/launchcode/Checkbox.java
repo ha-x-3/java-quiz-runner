@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Checkbox extends Question{
 
-    String question;
-    Boolean isCorrect;
-    String[] possibleAnswers;
-    String[] correctList;
+    private String question;
+    private Boolean isCorrect;
+    private String[] possibleAnswers;
+    private String[] correctList;
 
     public Checkbox(String aQuestion, String answers, String aCorrectAnswers) {
         possibleAnswers = answers.split(",");

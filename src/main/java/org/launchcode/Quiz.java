@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Quiz {
 
-    ArrayList<Question> theQuestions = new ArrayList<>();
-    String name;
-    Integer totalCorrect = 0;
+    private ArrayList<Question> theQuestions = new ArrayList<>();
+    private String name;
+    private Integer totalCorrect = 0;
     Quiz(String aName) {
         name = aName;
     }
@@ -46,4 +46,7 @@ public class Quiz {
         return "Sorry! That's incorrect!\n";
     }
 
+    public ArrayList<Question> getTheQuestions() {
+        return theQuestions;
+    }
 }

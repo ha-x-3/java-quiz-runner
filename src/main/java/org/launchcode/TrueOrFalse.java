@@ -2,9 +2,9 @@ package org.launchcode;
 
 public class TrueOrFalse extends Question{
 
-    String question;
-    String answer;
-    Boolean isCorrect;
+    private String question;
+    private String answer;
+    private Boolean isCorrect;
 
     public String ask() {
         return "True or False \n" + this.question;

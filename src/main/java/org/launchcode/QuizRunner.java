@@ -27,10 +27,10 @@ public class QuizRunner {
         Scanner input = new Scanner(System.in);
         String answer;
         for (int i = 0; i < quiz.getTotalQuestions(); i++) {
-            System.out.println(quiz.theQuestions.get(i).ask());
+            System.out.println(quiz.getTheQuestions().get(i).ask());
             answer = input.nextLine();
-            quiz.theQuestions.get(i).record(answer);
-            System.out.println(quiz.gradeQ(quiz.theQuestions.get(i).getIsCorrect()));
+            quiz.getTheQuestions().get(i).record(answer);
+            System.out.println(quiz.gradeQ(quiz.getTheQuestions().get(i).getIsCorrect()));
         }
         System.out.println(quiz.getGrade());
     }
