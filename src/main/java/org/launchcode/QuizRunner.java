@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class QuizRunner {
     public static void main(String[] args) {
 
-        Quiz quiz = new Quiz("quiz");
+        Quiz quiz = new Quiz("Quiz");
         quiz.addTF("True", "In a website browser, \"www\" stands for World Wide Web.");
         quiz.addMC("Who was the first woman pilot to fly solo across the Atlantic?", "B", "\tA. Bessie Coleman \n" +
                 "    B. Amelia Earhart\n" +
@@ -24,6 +24,10 @@ public class QuizRunner {
                 "    B. Nauru\n" +
                 "    C. Scotland\n" +
                 "    D. Liechtenstein");
+        quiz.addMC("This hair pattern in cats is seen in almost exclusively females: ", "C", "\tA. Tortoiseshell \n" +
+                "    B. Tabby\n" +
+                "    C. Calico\n" +
+                "    D. Pointed");
         Scanner input = new Scanner(System.in);
         String answer;
         for (int i = 0; i < quiz.getTotalQuestions(); i++) {
