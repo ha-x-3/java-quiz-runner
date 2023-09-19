@@ -1,53 +1,71 @@
 package org.launchcode;
 
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class Quiz {
 
-    private final ArrayList<Question> theQuestions = new ArrayList<>();
-    private final String name;
-    private Integer totalCorrect = 0;
-    public Quiz(String aName) {
-        name = aName;
+    private final ArrayList<Question> questions = new ArrayList<>();
+
+    private int numCorrect = 0;
+
+    //Default constructor is sufficient
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
     }
 
-    public Integer getTotalQuestions() {
-        return this.theQuestions.size();
+    public int getNumCorrect() {
+        return numCorrect;
     }
 
-    public String getGrade() {
-        return this.totalCorrect + "/" + this.getTotalQuestions();
+    public void addQuestions(Question[] questionArray) {
+        Collections.addAll(questions, questionArray);
     }
 
-    private void incrementTotalCorrect() {
-        this.totalCorrect++;
-    }
+    public void run() {
 
-    public void addMC(String aQuestion, String anAnswer, String aPossibleAnswers) {
-        Question q = new MultipleChoice(aQuestion, anAnswer, aPossibleAnswers);
-        this.theQuestions.add(q);
-    }
+        Scanner input = new Scanner(System.in);
+        Collections.shuffle(questions);
 
-    public void addCB(String aQuestion, String answers, String aCorrectAnswers) {
-        Question q = new Checkbox(aQuestion, answers, aCorrectAnswers);
-        this.theQuestions.add(q);
-    }
+        for (Question question : questions) {
+            System.out.println(question);
 
-    public void addTF(String anAnswer, String aQuestion) {
-       Question q = new TrueOrFalse(anAnswer, aQuestion);
-       this.theQuestions.add(q);
-    }
+            ArrayList<Integer> userResponses = new ArrayList<>();
+            int i = 0;
+            while (i < question.getMaxResponses()) {
+                String userResponse;
+                //Validate response
+                do {
+                    System.out.println("Please enter a number: ");
+                    userResponse = input.nextLine();
+                } while (question.isInvalid(userResponse));
 
-    public String gradeQ(Boolean isCorrect) {
-        if (isCorrect) {
-            this.incrementTotalCorrect();
-            return "You are correct!\n";
+                //Evaluate response
+                int userResponseNumber = Integer.parseInt(userResponse);
+                if (userResponses.contains(userResponseNumber)) {
+                    System.out.println("You already got that one!");
+                } else if (!question.getChoiceMap().get(userResponseNumber).isCorrect()) {
+                    System.out.println("Sorry, the correct answer was: ");
+                    for (Choice choice : question.getChoiceMap().values()) {
+                        if(choice.isCorrect()) {
+                            System.out.println(choice.getContent());
+                        }
+                    }
+                    break;
+                } else {
+                    System.out.println("Correct! Great job!");
+                    userResponses.add(userResponseNumber);
+                    if (i == question.getMaxResponses() - 1) {
+                        numCorrect++;
+                    }
+                    i++;
+                }
+            }
         }
-        return "Sorry! That's incorrect!\n";
-    }
-
-    public ArrayList<Question> getTheQuestions() {
-        return theQuestions;
+        input.close();
     }
 
 }
