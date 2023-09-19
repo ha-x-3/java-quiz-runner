@@ -1,49 +1,30 @@
 package org.launchcode;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class Checkbox extends Question{
 
-    private final String question;
-    private Boolean isCorrect;
-    private final String[] possibleAnswers;
-    private final String[] correctList;
 
-    public Checkbox(String aQuestion, String answers, String aCorrectAnswers) {
-        possibleAnswers = answers.split(",");
-        question = aQuestion;
-        correctList = aCorrectAnswers.split(",");
+    public Checkbox(String question, Choice[] choiceArray) {
+        super(question, choiceArray);
+        setMaxResponses(getNumCorrect());
     }
 
-    public String ask() {
-        String askString = question + "\n" + "Please select all of the correct answers separated by a comma like so: 1,3,5 (No spaces!)";
+    @Override
+    public String toString() {
+        String newline = System.lineSeparator();
+        return newline + "CHOOSE ALL THAT APPLY:" + newline +
+                getQuestion() + newline +
+                getFormattedChoices();
+    }
 
-        for (String possibleAnswer : possibleAnswers) {
-            askString += "\n" + possibleAnswer;
+    public int getNumCorrect() {
+        int numCorrect = 0;
+        for (Choice choice : getChoiceMap().values()) {
+            if (choice.isCorrect()) {
+                numCorrect++;
+            }
         }
-        return askString;
-    }
-
-    public void record(String userAnswer) {
-        String[] userAnswers = userAnswer.split(",");
-        List<String> iterAnswers;
-        iterAnswers = Arrays.asList(userAnswers);
-        List<String> iterCorrect = Arrays.asList(this.correctList);
-        if(userAnswers.length != possibleAnswers.length) {
-            this.setIsCorrect(false);
-        }
-        if(iterCorrect.containsAll(iterAnswers)) {
-            this.setIsCorrect(true);
-        }
-    }
-
-    private void setIsCorrect(Boolean corr) {
-        isCorrect = corr;
-    }
-
-    public Boolean getIsCorrect() {
-        return this.isCorrect;
+        return numCorrect > 0 ? numCorrect : getChoiceMap().size();
     }
 
 }

@@ -2,33 +2,16 @@ package org.launchcode;
 
 public class TrueOrFalse extends Question{
 
-    private final String question;
-    private final String answer;
-    private Boolean isCorrect;
 
-    public TrueOrFalse(String anAnswer, String aQuestion) {
-        answer = anAnswer;
-        question = aQuestion;
+    public TrueOrFalse(String question, Choice[] choiceArray) {
+        super(question, choiceArray);
     }
 
-    public String ask() {
-        return "True or False \n" + this.question;
+    @Override
+    public String toString() {
+        String newline = System.lineSeparator();
+        return newline + "TRUE OR FALSE:" + newline +
+                getQuestion() + newline +
+                getFormattedChoices();
     }
-
-    public void record(String userAnswer) {
-        if(userAnswer.equals(answer)) {
-            this.setIsCorrect(true);
-        } else {
-            this.setIsCorrect(false);
-        }
-    }
-
-    private void setIsCorrect(Boolean possibleCorrect) {
-        isCorrect = possibleCorrect;
-    }
-
-    public Boolean getIsCorrect() {
-        return isCorrect;
-    }
-
 }
